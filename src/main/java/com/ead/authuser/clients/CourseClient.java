@@ -20,16 +20,16 @@ import java.util.UUID;
 
 @Log4j2
 @Component
-public class UserClient {
+public class CourseClient {
 
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    UtilsService utilsService;
+    private UtilsService utilsService;
 
     @Value("${ead.api.url.course}")
-    String REQUEST_URL_COURSE;
+    private String REQUEST_URL_COURSE;
 
     public Page<CourseDTO> getAllCourses(UUID userId, Pageable pageable) {
         List<CourseDTO> searchResult = null;
