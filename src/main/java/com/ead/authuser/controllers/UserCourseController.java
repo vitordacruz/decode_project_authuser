@@ -29,6 +29,8 @@ public class UserCourseController {
     public static final String ERROR_SUBSCRIPTION_ALREADY_EXISTS = "Error: subscription already exists!";
     public static final String USER_NOT_FOUND = "User not found";
 
+    public static final String USER_COURSE_NOT_FOUND = "User Course not found";
+
     @Autowired
     CourseClient courseClient;
 
@@ -69,4 +71,17 @@ public class UserCourseController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userCourseModel);
     }
+
+    @DeleteMapping("/users/courses/{courseId}")
+    public ResponseEntity<Object> deleteUserCourseByCourse(@PathVariable(value = "courseId") UUID courseId) {
+        if (!userCourseService.existsByCourseId(courseId)) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(USER_COURSE_NOT_FOUND);
+        } else {
+            userCourseService.deleteUserCourseByCourseId(courseId);
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("UserCourse deleted successfully.");
+        }
+    }
+
 }
