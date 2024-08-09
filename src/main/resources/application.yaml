@@ -7,7 +7,7 @@ spring:
   application:
     name: ead-authuser-service
   datasource:
-    url:  jdbc:mysql://localhost:3306/ead_authuser?useTimezone=true&serverTimezone=America/Sao_Paulo
+    url:  jdbc:mysql://localhost:3306/ead_authuser_v2?useTimezone=true&serverTimezone=America/Sao_Paulo
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   jpa:
@@ -22,6 +22,8 @@ spring:
   output:
     ansi:
       enabled: Always
+  rabbitmq:
+    addresses: ${RABBIT_MQ_URL}
 
 logging:
   level:
