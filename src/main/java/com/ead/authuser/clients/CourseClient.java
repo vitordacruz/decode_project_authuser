@@ -38,7 +38,7 @@ public class CourseClient {
         log.debug("Request URL: {} ", url);
         log.info("Request URL: {} ", url);
         try{
-            ParameterizedTypeReference<ResponsePageDTO<CourseDTO>> responseType = new ParameterizedTypeReference<>() {};
+            ParameterizedTypeReference<ResponsePageDTO<CourseDTO>> responseType = new ParameterizedTypeReference<ResponsePageDTO<CourseDTO>>() {};
             result = restTemplate.exchange(url, HttpMethod.GET, null, responseType);
             searchResult = result.getBody().getContent();
             log.debug("Response Number of Elements: {} ", searchResult.size());
